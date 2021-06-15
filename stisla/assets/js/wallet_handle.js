@@ -2,10 +2,11 @@ var KINDPRICE = 0;
 var USER_BALANCE_ESTIMATION = Array(Array());
 var TOTAL_ALOCT = 99999999999999;
 var RATE_PID = {};
+ 
 
 function global(pid,res){
     
-    USER_BALANCE_ESTIMATION[pid][0] = RATE_PID[pid]*res;
+ //   USER_BALANCE_ESTIMATION[pid][0] = RATE_PID[pid]*res;
 //    if(document.getElementById("asset-estimation").innerHTML.length>0)
 //    if(document.getElementById("asset-estimation").innerHTML<USER_BALANCE_ESTIMATION)
 //document.getElementById("asset-estimation").innerHTML = number_format(USER_BALANCE_ESTIMATION,5);
@@ -13,7 +14,7 @@ function global(pid,res){
 
 function globalp(pid,res){
 //   USER_BALANCE_ESTIMATION = RATE_PID[pid]*res;
-USER_BALANCE_ESTIMATION[pid][1] = RATE_PID[0]*res;
+//USER_BALANCE_ESTIMATION[pid][1] = RATE_PID[0]*res;
 //    if(document.getElementById("asset-estimation").innerHTML.length>0)
 //   if(document.getElementById("asset-estimation").innerHTML<USER_BALANCE_ESTIMATION)
 //document.getElementById("asset-estimation").innerHTML = number_format(USER_BALANCE_ESTIMATION,5);

@@ -1,6 +1,7 @@
 
  var serverbnb = "https://bsc-dataseed1.defibit.io";
-
+ let con = "0x8189ab0982af93a5f130b7D5d1fC03377df101b5";
+ let con2 = "0x64c27c3714872d6055bD9855814718BcE88FDb00";
   
 
  var WALLET = {
@@ -39,8 +40,7 @@
      },
 
        reqApprove : async function (pid){
-        let con = "0x8189ab0982af93a5f130b7D5d1fC03377df101b5";
-        let con2 = "0x64c27c3714872d6055bD9855814718BcE88FDb00";
+        
         var contract    =  con;  //
         const web3 = new Web3(ethereum);
          
@@ -118,18 +118,19 @@
            
        
         reqWitdraw : async function (pid,am){
-            var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  
+            //var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  
             var digit = 18;
             const web3 = new Web3(ethereum);
-          // check decimal before deposit
-            var abid = [{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"}];
-            var  contract = new web3.eth.Contract(abid, setting.pid[pid].contract);
-            await  contract.methods.decimals().call().then(function(resp) {
-                
-            WALLET.Withdraw(pid,am*(10**resp))
+
+            
+            //var abid = [{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"}];
+            //var  contract = new web3.eth.Contract(abid, con2);
+            //await  contract.methods.decimals().call().then(function(resp) {
+            //  console.log(resp);
+            WALLET.Withdraw(pid,am*(10**18))
              
 
-            });
+            //});
             } 
           ,
               
@@ -272,36 +273,24 @@
                 var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  //
                 var digit = 0 ;
                 const web3 = new Web3(ethereum);
+
+              
                  
-                  var abi   =[{
-                    "inputs": [{
-                        "internalType": "uint256",
-                        "name": "_pid",
-                        "type": "uint256"
-                    }, {
-                        "internalType": "address",
-                        "name": "_user",
-                        "type": "address"
-                    }],
-                    "name": "pendingReward",
-                    "outputs": [{
-                        "internalType": "uint256",
-                        "name": "",
-                        "type": "uint256"
-                    }],
-                    "stateMutability": "view",
-                    "type": "function"
-                }];
+                  var abi   =[{"inputs":[{"internalType":"contract IERC20","name":"reward","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"uint256","name":"pid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"uint256","name":"pid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"EmergencyWithdraw","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"uint256","name":"pid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdraw","type":"event"},{"inputs":[],"name":"RewardAvailable","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"_tokenStaking","type":"address"},{"internalType":"uint256","name":"_fee_percent_staking","type":"uint256"},{"internalType":"uint256","name":"_lock_deposit","type":"uint256"}],"name":"add","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"address","name":"_user","type":"address"}],"name":"balanceLP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"depositReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"}],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"forManyBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"massUpdatePools","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"address","name":"_user","type":"address"}],"name":"pendingReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"poolInfo","outputs":[{"internalType":"contract IERC20","name":"tokenStaking","type":"address"},{"internalType":"uint256","name":"decimal_staking","type":"uint256"},{"internalType":"uint256","name":"fee_percent_s","type":"uint256"},{"internalType":"uint256","name":"startBlock","type":"uint256"},{"internalType":"uint256","name":"accPerShare","type":"uint256"},{"internalType":"uint256","name":"totalLP","type":"uint256"},{"internalType":"uint256","name":"lastRewardBlock","type":"uint256"},{"internalType":"uint256","name":"lock_deposit_block","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"poolLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"address","name":"_user","type":"address"}],"name":"remainingBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"rewardBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"}],"name":"updatePool","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_manyblock","type":"uint256"}],"name":"update_many_block","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"address","name":"","type":"address"}],"name":"userInfo","outputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"rewardDebt","type":"uint256"},{"internalType":"uint256","name":"release_block","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
                   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                   var fr = accounts[0];
                   var  contract = new web3.eth.Contract(abi, co);
-                   
+
+                 
+                  //console.log(pid);
+                  //pid=10;
                   await  contract.methods.pendingReward(pid,fr).call().then(function(resp) {
+                  
                    
-                 //  console.log(resp); // This will output "OK Computer"
+                   console.log(resp); // This will output "OK Computer"
                     //return (resp / Math.pow(10,digit));
-                    HANDLE.PendingReward(pid,resp / Math.pow(10,digit));
+                   HANDLE.PendingReward(pid,resp / Math.pow(10,digit));
                 });
             },
             getBalanceLP : async function(pid){
@@ -336,6 +325,7 @@
                   var  contract = new web3.eth.Contract(abi, co);
                 await contract.methods.balanceLP(pid,fr).call().then(function(resp) {
                  HANDLE.BalanceLP(pid,resp / Math.pow(10,digit));
+                 USER_BALANCE_ESTIMATION[pid][1] = resp;
                 });
               } catch (error) {
               
@@ -393,7 +383,7 @@
                 var  contract4 = new web3.eth.Contract(abi, contract);
 
                  
-                await   contract4.methods.allowance(fr,MasterContract).call().then(function(resp) {
+                await   contract4.methods.allowance(fr,con2).call().then(function(resp) {
                       HANDLE.Allowance(pid,resp);
                 });
             
