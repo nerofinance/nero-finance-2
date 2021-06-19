@@ -1,5 +1,5 @@
 
-let cont = "0x64c27c3714872d6055bD9855814718BcE88FDb00";
+let cont = "0x2816C6a1746315e16125532E5a0f357F55090AD3";
 const request = require('request'); 
 const Web3 = require('web3'); 
 var serverbnb = "https://bsc-dataseed1.defibit.io";

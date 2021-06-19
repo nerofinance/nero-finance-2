@@ -1,7 +1,8 @@
 
  var serverbnb = "https://bsc-dataseed1.defibit.io";
  let con = "0x8189ab0982af93a5f130b7D5d1fC03377df101b5";
- let con2 = "0x64c27c3714872d6055bD9855814718BcE88FDb00";
+ let con2 = '0x2816C6a1746315e16125532E5a0f357F55090AD3';
+ let main_contract = con2;
   
 
  var WALLET = {
@@ -102,7 +103,7 @@
         
        
         reqDeposit : async function (pid,am){
-            var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  
+            var co    = main_contract;  
             var digit = 18;
             const web3 = new Web3(ethereum);
           // check decimal before deposit
@@ -118,7 +119,7 @@
            
        
         reqWitdraw : async function (pid,am){
-            //var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  
+            //var co    = main_contract;  
             var digit = 18;
             const web3 = new Web3(ethereum);
 
@@ -138,7 +139,7 @@
        
         Deposit : async function (pid,am){
            
-          var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  
+          var co    = main_contract;  
           var digit = 18;
           const web3 = new Web3(ethereum);
         
@@ -186,7 +187,7 @@
 
             addContract : async function (token){
 
-              var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  
+              var co    = main_contract;  
               const web3 = new Web3(ethereum);
               
                 var abi =[ {
@@ -224,7 +225,7 @@
               },
 
             Withdraw : async function  (pid,am){
-                var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";   
+                var co    = main_contract;   
                 var digit = 18;
                   
                   const web3 = new Web3(ethereum);
@@ -270,7 +271,7 @@
                
             getPendingReward : async function(pid){
               if(WALLET.walletConect()){} else return;
-                var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  //
+                var co    = main_contract;  //
                 var digit = 0 ;
                 const web3 = new Web3(ethereum);
 
@@ -295,7 +296,7 @@
             },
             getBalanceLP : async function(pid){
                if(WALLET.walletConect()){} else return;
-                var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  //
+                var co    = main_contract;  //
                 var digit = 18 ;
                 const web3 = new Web3(ethereum);
                  
@@ -390,7 +391,7 @@
             },
             getPoolLength : async function(){
               if(WALLET.walletConect()){} else return;
-                var co    = "0x64c27c3714872d6055bD9855814718BcE88FDb00";  //
+                var co    = main_contract;  //
                 // var digit = setting.pid[pid].digits ;
                 const web3 = new Web3(ethereum);
                  
